@@ -41,8 +41,8 @@ This gave me a proper 2×2 factorial design:
 | **Vanilla**      | Model C        | Model D               |
 
 The finding I care most about: applying the constraint to the fine-tuned model improved
-recall on the suicide class by +1.5pp (0.796 → 0.811) and improved accuracy on
-high-entropy (linguistically complex) texts by +1.6pp. The constraint appears to help
+recall on the suicide class by +1.5 pp (0.796 → 0.811) and improved accuracy on
+high-entropy (linguistically complex) texts by +1.6 pp. The constraint appears to help
 most precisely where the model is under the most representational stress — which is
 what the biological hypothesis would predict.
 
@@ -79,8 +79,11 @@ cd CANN-Bench
 conda env create -f environment.yml
 conda activate cann-bench
 
-# Run the emotion benchmark (offline mock data, no HuggingFace needed)
-python -m src.benchmark.run --offline --max-rows 200
+# Run the full 2×2 clinical benchmark (~35 min on M2)
+python -m src.benchmark.clinical_run
+
+# Smoke test (< 2 min)
+python -m src.benchmark.clinical_run --max-rows 500
 
 # Run tests
 pytest tests/ -v
