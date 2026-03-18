@@ -1,0 +1,40 @@
+# CANN-Bench Configuration
+# Edit this file to configure models, data paths, and benchmark settings.
+
+project:
+  name: CANN-Bench
+  version: "0.1.0"
+
+paths:
+  data_raw: data/raw/
+  data_processed: data/processed/
+  atlases: data/atlases/
+  results: results/
+  database: results/benchmark.db
+
+model:
+  name: distilbert-base-uncased
+  max_length: 128
+  batch_size: 32
+  learning_rate: 2e-5
+  epochs: 3
+
+atlas:
+  default: dopamine_gradient.csv
+  constraint_strength: 1.0   # Scale factor for anatomical modulation (0=off, 1=full)
+
+benchmark:
+  metrics:
+    - accuracy
+    - f1
+    - roc_auc
+  n_seeds: 3               # Number of random seeds for statistical reliability
+  compare_baseline: true   # Always run standard (unconstrained) model for comparison
+
+clinical_benchmark:
+  dataset: data/raw/Suicide_Detection.csv
+  checkpoint: data/checkpoints/checkpoint-48726
+  num_labels: 2
+  label_names: ["non-suicide", "suicide"]
+  test_size: 0.2
+  focus_metric: recall  # clinically we minimise false negatives

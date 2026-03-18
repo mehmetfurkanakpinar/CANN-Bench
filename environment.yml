@@ -1,0 +1,43 @@
+name: cann-bench
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+
+  # Core scientific stack
+  - numpy=1.24
+  - pandas=2.0
+  - scipy=1.11
+
+  # Deep learning
+  - pytorch=2.1
+  - transformers=4.35   # DistilBERT etc.
+
+  # Data & storage
+  - sqlalchemy=2.0      # SQLite ORM
+  - pyyaml
+
+  # NLP utilities
+  - nltk
+  - scikit-learn
+
+  # Testing & quality
+  - pytest
+  - pytest-cov
+
+  # Visualisation
+  - matplotlib
+  - seaborn
+
+  # Development
+  - black              # code formatter
+  - flake8             # linter
+  - ipykernel          # Jupyter support
+
+  - pip:
+    - datasets          # HuggingFace datasets
+    - evaluate          # HuggingFace metrics
