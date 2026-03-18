@@ -1,12 +1,16 @@
 name: cann-bench
 channels:
-  - pytorch
+  - pytorch=2.1
   - conda-forge
   - defaults
 
 dependencies:
   - python=3.10
-  - pip
+  - pip:
+    - datasets==4.8.2
+    - evaluate
+    - huggingface-hub==0.36.2
+    - tokenizers==0.19.1
 
   # Core scientific stack
   - numpy=1.24
@@ -15,7 +19,7 @@ dependencies:
 
   # Deep learning
   - pytorch=2.1
-  - transformers=4.35   # DistilBERT etc.
+  - transformers=4.40.0   # DistilBERT etc.
 
   # Data & storage
   - sqlalchemy=2.0      # SQLite ORM
